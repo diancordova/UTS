@@ -1,0 +1,51 @@
+<?php include('header.php'); ?>
+	<div><div class="container-fluid">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<h1>Daftar Pegawai</h1>	
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Nama</th>
+							<th>Nip</th>
+							<th>Tanggal Lahir</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php echo anchor("Pegawai/create",'Create',['class'=>'btn btn-primary'])?>
+					<?php foreach ($data_pegawai as $key) { ?>
+						<tr>
+							<td><?php echo $key->nama ?></td>
+							<td><?php echo $key->nip ?></td>
+							<td><?php echo $key->tanggalLahir ?></td>
+				
+							<td>
+								<a href="<?php echo site_url('jabatan/create/').$key->id ?>" type="button" class="btn btn-info">Jabatan</a>
+								<a href="<?php echo site_url('anak/create/').$key->id ?>" type="button" class="btn btn-success">Anak</a>
+								<a href="<?php echo site_url('pegawai/update/').$key->id ?>" type="button" class="btn btn-warning">Edit</a>
+								<button type="delete" name="hapus" class="btn btn-danger" data-toggle="modal" href='<?php echo "#".$key->id; ?>'>Hapus</button>
+								<div class="modal fade" id="<?php echo "".$key->id ?>">
+								<div class="modal-dialog">
+								<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title">Apakah anda yakin menghapus data pegawai dengan nama "<?php echo $key->nama ?>"</h4>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<a href="<?php echo site_url('pegawai/delete/').$key->id ?>" type="button" class="btn btn-danger">Ya, Hapus</a>
+								</div>
+								</div>
+								</div>
+								<?php } ?>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		</div>
+	</div>
+	</body>
+</html>
