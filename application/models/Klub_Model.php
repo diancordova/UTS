@@ -21,7 +21,7 @@ class Klub_Model extends CI_Model {
 		{
 			$this->db->select("pemain.id,pemain.nama as namaPemain ,klub.nama as namaKlub, posisi,DATE_FORMAT(tanggal_lahir,'%d-%m-%Y') as tanggalLahir");
 			$this->db->where('fk_klub', $idKlub);	
-			$this->db->join('klub', 'pemain.id = pemain.fk_klub', 'left');	
+			$this->db->join('klub', 'klub.id = pemain.fk_klub', 'left');	
 			$query = $this->db->get('pemain');
 			return $query->result();
 		}
@@ -69,7 +69,7 @@ class Klub_Model extends CI_Model {
 		}
 		public function updateByIdPemain($id)
 		{
-			$data = array('nama' => $this->input->post('nama'),'tanggal_lahir' => $this->input->post('tanggal_lahir'),'posisi' => $this->input->post('posisi'));
+			$data = array('nama' => $this->input->post('nama'),'tanggal_lahir' => $this->input->post('tanggalLahir'),'posisi' => $this->input->post('posisi'));
 			$this->db->where('id', $id);
 			$this->db->update('pemain', $data);
 		}

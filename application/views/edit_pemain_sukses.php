@@ -5,7 +5,7 @@
  <head>
 <script language="javascript">
 	$("document").ready(function(){
-			alert("Update data Sukses");
+			alert("Update data pemain Sukses");
 		});
 
 </script>
@@ -16,11 +16,7 @@
  <body>
     <div class="container-fluid">
     	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    	 		<a href="<?php echo site_url('pegawai/update')?>" type="button" class="btn btn-primary">UPDATE PEGAWAI INI LAGI</a>	
-
-    	 		<br>
-    	 		<br>
-    	 		<a href="<?php echo site_url('pegawai/')?>" type="button" class="btn btn-success">KEMBALI KE DATA PEGAWAI</a>	
+    	 		<a href="<?php echo site_url('Klub/')?>" type="button" class="btn btn-success">KEMBALI KE DATA KLUB</a>	
     	</div>
     </div>
  </body>

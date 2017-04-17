@@ -1,12 +1,13 @@
 <?php include('header.php') ?>
 					<div class="container-fluid">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<h1>Daftar Pemain</h1>	
+						<h1>Daftar Pemain </h1>	
 						<div class="table-responsive">
 							<table class="table table-hover" id="example">
 								<thead>
 									<tr>
 										<th>Nama Pemain</th>
+										<td>Klub</td>
 										<th>Posisi</th>
 										<th>Tanggal Lahir</th>
 										<th>Action</th>
@@ -18,10 +19,11 @@
 								<?php foreach ($pemain_list as $key) { ?>
 									<tr>
 										<td><?php echo $key->namaPemain ?></td>
+										<td><?php echo $key->namaKlub; ?></td>
 										<td><?php echo $key->posisi ?></td>
 										<td><?php echo $key->tanggalLahir ?></td>
 										<td>
-								<a href="<?php echo site_url('pemain/update/').$key->id ?>" type="button" class="btn btn-warning">Edit</a>
+								<a href="<?php echo site_url('pemain/update/').$key->id.('/').$this->uri->segment(3)?>" type="button" class="btn btn-warning">Edit</a>
 								<button type="delete" name="hapus" class="btn btn-danger" data-toggle="modal" href='<?php echo "#".$key->id; ?>'>Hapus</button>
 								<div class="modal fade" id="<?php echo "".$key->id ?>">
 								<div class="modal-dialog">
@@ -32,7 +34,7 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									<a href="<?php echo site_url('pemain/delete/').$key->id ?>" type="button" class="btn btn-danger">Ya, Hapus</a>
+									<a href="<?php echo site_url('pemain/delete/').$key->id.('/').$this->uri->segment(3) ?>" type="button" class="btn btn-danger">Ya, Hapus</a>
 								</div>
 								</div>
 								</div></td>

@@ -45,8 +45,8 @@ class Pemain extends CI_Controller {
 			$this->load->view('edit_pemain_view',$data);
 
 		}else{
-			//$this->klub_model->updateByIdPemain()
-			$this->load->view('edit_pemain_suskes');             
+			$this->klub_model->updateByIdPemain($id);
+			$this->load->view('edit_pemain_sukses');          
             
 
 		}
@@ -54,7 +54,8 @@ class Pemain extends CI_Controller {
 		
 	}
 
-	public function delete($id)
+
+	public function delete($id,$idKlub)
 	{
 		$this->load->helper('url','form');
 		$this->load->library('form_validation');
@@ -64,7 +65,7 @@ class Pemain extends CI_Controller {
 		if($this->form_validation->run()==FALSE){
 
 	}
-		$this->load->view('hapus'); 
+		redirect('Pemain/create/'.$idKlub);
 	}
 }
 
